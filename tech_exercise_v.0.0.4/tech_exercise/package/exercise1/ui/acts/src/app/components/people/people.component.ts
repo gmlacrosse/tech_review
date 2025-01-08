@@ -15,10 +15,11 @@ export class PeopleComponent {
 
   people: Person[] = [];
 
+  constructor() { }
+
   ngOnInit(){
-    this.peopleService.getAllPeople().subscribe((people) => {
-      this.people = people;
+    this.peopleService.getAllPeople().subscribe(response => {
+      this.people = response.people;
     });
-    console.log(this.people);
   }
 }

@@ -6,3 +6,10 @@ export interface Person {
   careerStartDate: Date;
   careerEndDate?: Date;
 }
+
+export interface PersonResponse {
+  people: Person[];
+  success: boolean;
+  message: string;
+  responseCode: number;
+}

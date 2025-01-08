@@ -1,3 +1,14 @@
 <h2>People</h2>
 
+<div *ngFor="let person of people">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">{{ person.name }}</h5>
+      <p class="card-text">Rank: {{ person.currentRank }}</p>
+      <p class="card-text">Duty: {{ person.currentDutyTitle }}</p>
+      <p class="card-text">Start Date: {{ person.careerStartDate | date }}</p>
+      <p class="card-text">End Date: {{ person.careerEndDate | date}}</p>
+    </div>
+  </div>
+</div>
 

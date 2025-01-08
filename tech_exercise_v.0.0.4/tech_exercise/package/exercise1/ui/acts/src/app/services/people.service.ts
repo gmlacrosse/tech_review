@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
-import { Person } from '../models';
+import { Person, PersonResponse } from '../models';
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +21,8 @@ export class PeopleService {
       );
   }
 
-  getAllPeople(): Observable<Person[]> {
-    return this.http.get<Person[]>(`${this.apiUrl}/person`, this.httpOptions)
+  getAllPeople(): Observable<PersonResponse> {
+    return this.http.get<PersonResponse>(`${this.apiUrl}/person`, this.httpOptions)
       .pipe(
         catchError(this.handleError)
       );

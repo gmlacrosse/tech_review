@@ -6,6 +6,7 @@ import { PeopleComponent } from './components/people/people.component';
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'people', component: PeopleComponent },
+  { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
 
 @NgModule({
