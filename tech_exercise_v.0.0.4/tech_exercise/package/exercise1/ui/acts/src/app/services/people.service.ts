@@ -7,7 +7,7 @@ import { Person, PersonResponse } from '../models';
   providedIn: 'root'
 })
 export class PeopleService {
-  private apiUrl = 'https://localhost:7204'; // Replace with actual API URL
+  private apiUrl = 'https://localhost:7204';
   private httpOptions = {
     headers: new HttpHeaders({ 'accept': '*/*', 'Content-Type': 'application/json' })
   };
