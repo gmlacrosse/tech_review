@@ -1,7 +1,7 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { PeopleService } from '../../services/people.service';
 import { Person } from '../../models';
-import { Observable } from 'rxjs';
+import { FilterPersonPipe } from '../../directives/person-filter.pipe';
 
 @Component({
   selector: 'app-people',
@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
 })
 export class PeopleComponent {
   peopleService = inject(PeopleService);
-
+  searchTerm = signal('');
   people: Person[] = [];
 
   constructor() { }
@@ -23,3 +23,5 @@ export class PeopleComponent {
     });
   }
 }
+
+

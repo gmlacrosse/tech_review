@@ -9,6 +9,8 @@ import { PeopleComponent } from './components/people/people.component';
 import { PeopleService } from './services/people.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { FilterPersonPipe } from './directives/person-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -21,9 +23,11 @@ import { CommonModule } from '@angular/common';
     BrowserModule,
     AppRoutingModule,
     CommonModule,
-    HttpClientModule
-  ],
-  providers: [PeopleService, HttpClient],
+    HttpClientModule,
+    FormsModule,
+    FilterPersonPipe
+],
+  providers: [PeopleService, HttpClient, FilterPersonPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
