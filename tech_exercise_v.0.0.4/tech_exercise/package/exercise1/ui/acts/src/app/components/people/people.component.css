@@ -1,13 +1,15 @@
 .container {
   margin-top: 20px;
-  display: flex;
+  display: inline-block;
 }
 
 .card {
+  display: flex;
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 15px;
+  margin-right: 10px;
 }
 
 .card-title {
