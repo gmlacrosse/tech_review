@@ -25,15 +25,15 @@ namespace StargateAPI.Business.Queries
 
             var result = new GetAstronautDutiesByNameResult();
 
-            var query = $"SELECT a.Id as PersonId, a.Name, b.CurrentRank, b.CurrentDutyTitle, b.CareerStartDate, b.CareerEndDate FROM [Person] a LEFT JOIN [AstronautDetail] b on b.PersonId = a.Id WHERE \'{request.Name}\' = a.Name";
+            var query = $"SELECT a.Id as PersonId, a.Name, b.CurrentRank, b.CurrentDutyTitle, b.CareerStartDate, b.CareerEndDate FROM [Person] a LEFT JOIN [AstronautDetail] b on b.PersonId = a.Id WHERE @name = a.Name";
 
-            var person = await _context.Connection.QueryFirstOrDefaultAsync<PersonAstronaut>(query);
+            var person = await _context.Connection.QueryFirstOrDefaultAsync<PersonAstronaut>(query, new { name = request.Name} );
 
             result.Person = person;
 
-            query = $"SELECT * FROM [AstronautDuty] WHERE {person.PersonId} = PersonId Order By DutyStartDate Desc";
+            query = $"SELECT * FROM [AstronautDuty] WHERE @personId = PersonId Order By DutyStartDate Desc";
 
-            var duties = await _context.Connection.QueryAsync<Data.AstronautDuty>(query);
+            var duties = await _context.Connection.QueryAsync<Data.AstronautDuty>(query, new { personId = result?.Person?.PersonId });
 
             result.AstronautDuties = duties.ToList();
 
